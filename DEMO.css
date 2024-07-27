@@ -1,0 +1,406 @@
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat';
+  background-color: rgb(252, 255, 206);
+}
+
+body, input, label, header, div, nav, ul, li, a {
+  margin: 0;
+  padding: 0;
+}
+
+/* -------- HEADER SECTION -------- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  position: sticky;
+  z-index: 10;
+  container-name: header;
+  container-type: inline-size;
+  top: 0;
+}
+
+.header__img-logo {
+  width: 90px;
+  padding: 8px 10px;
+}
+
+.header__checkbox {
+  display: none;
+}
+
+.header__checkbox:checked ~ .header__nav {
+  display: flex;
+}
+
+.header__nav {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  z-index: -1;
+}
+
+.header__list {
+  margin: auto;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  list-style: none;
+  align-items: center;
+}
+
+.header__list :is(:hover, :active) {
+  text-decoration: underline;
+  color: orange;
+}
+
+.header__link {
+  text-decoration: none;
+  color: rgb(77, 66, 46);
+}
+
+.header__btn {
+  position: absolute;
+  font-size: 3rem;
+  color: orange;
+  right: 13px;
+}
+
+/* -------- HEADER QUERIES -------- */
+
+@container header (min-width: 600px) {
+  .header__nav {
+    display: block;
+    height: auto;
+    width: auto;
+    position: static;
+  }
+
+  .header__list {
+    height: auto;
+    flex-direction: row;
+    gap: 13px;
+    margin-right: 13px;
+  }
+
+  .header__btn {
+    display: none;
+  }
+}
+
+/* -------- HEADER ENDS -------- */
+
+/* -------- PROFILE SECTION -------- */
+
+.profile {
+  container-name: profile;
+  container-type: inline-size;
+}
+
+.profile__img-container {
+  overflow: hidden;
+  height: 280px;
+}
+
+.profile__wrapper {
+  background-color: #fff;
+  max-width: 980px;
+  margin: auto;
+}
+
+.profile__img {
+  max-width: 100%;
+  width: 700px;
+}
+
+.profile__data-container {
+  padding: 20px;
+  max-width: 600px;
+}
+
+.profile__list {
+  list-style: none;
+}
+
+.profile__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.load-bar {
+  border: 2px solid orangered;
+  width: 80%;
+  margin: 4px 0;
+  /* padding: 3px; */
+  border-radius: 12px;
+}
+
+.load-bar__bar {
+  background-color: orange;
+  padding: 3px;
+  border-radius: 9px;
+  color: #fff;
+  margin: 2px
+}
+
+.bar--80 {
+  width: 80%;
+}
+
+.bar--90 {
+  width: 90%;
+}
+
+.bar--75 {
+  width: 75%;
+}
+
+.bar--85 {
+  width: 85%;
+}
+
+.profile__title {
+  color: orange;
+  text-wrap: balance;
+}
+
+h2 {
+  color: orange;
+}
+
+.profile__text {
+  text-wrap: pretty;
+}
+
+/* -------- PROFILE QUERIES -------- */
+
+@container profile (min-width: 700px) {
+  .profile__wrapper {
+    display: flex;
+    padding: 20px;
+    background-color: transparent;
+    height: 90vh;
+  }
+
+  .profile__data-container {
+    width: 700px;
+    background-color: #fff;
+    border-radius: 0 25px 25px 0;
+    box-shadow: 0 0 3px 1px #0002;
+    display: flex;
+    align-items: center;
+  }
+
+  .profile__img-container {
+    /* border: 2px solid red; */
+    height: 100%;
+    border-radius: 25px 0 0 25px;
+  }
+
+  .profile__img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+/* -------- PROFILE ENDS -------- */
+
+/* -------- PORTFOLIO SECTION -------- */
+
+
+.portfolio {
+  background-color: rgb(250, 215, 151);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+  height: 100vh;
+  container-name: portfolio;
+  container-type: inline-size;
+}
+
+.portfolio__project-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  gap: 15px;
+  padding: 15px;
+  height: 90vh;
+  max-width: 900px;
+  margin: auto;
+  /* border: 2px solid red; */
+  /* box-sizing: border-box; */
+}
+
+.portfolio__project {
+  background: linear-gradient(#0000007c, #ec834657, #0000006b), url('desierto.png') center / cover;
+  border-radius: 10px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.portfolio__title {
+  margin: 0;
+  margin-top: 10px;
+  color: #fff;
+  font-size: 2.3rem;
+}
+
+.portfolio__name {
+  color: #fff;
+}
+
+.portfolio__project:hover {
+  opacity: 0.75;
+}
+
+/* -------- PORTFOLIO QUERIES -------- */
+
+@container portfolio (min-width: 680px) {
+  .portfolio__project-container {
+    grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+  }
+
+  .portfolio__project:first-child {
+    grid-column: span 2;
+  }
+
+  .portfolio__project:last-child {
+    grid-column: span 2;
+  }
+}
+
+@container portfolio (min-width: 900px) {
+  .portfolio__project-container {
+    grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+  }
+
+  .portfolio__project {
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.589);
+  }
+
+  .portfolio__project:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .portfolio__project:last-child {
+    grid-column: span 4;
+  }
+}
+
+/* -------- PORTFOLIO ENDS -------- */
+
+/* -------- CONTACT SECTION -------- */
+
+.form {
+  height: 80vh;
+  container-name: form;
+  container-type: inline-size;
+}
+
+.form__form {
+  background-color: transparent;
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 700px;
+}
+
+.form__container {
+  padding: 5px;
+}
+
+.form__title {
+  margin: 0;
+  margin-top: 20px;
+  text-align: center;
+  color: rgb(77, 71, 60);
+  font-size: 2rem;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 7px 5px;
+  margin: 3px 0;
+  font-family: inherit;
+  border-radius: 3px;
+  border: none;
+  box-shadow: 0 0 11px 1px #0002;
+}
+
+textarea {
+  resize: none;
+}
+
+label {
+  font-size: 0.9rem;
+  color: rgb(56, 54, 49);
+}
+
+.form__btn {
+  background-color: rgb(250, 135, 94);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+
+
+/* -------- CONTACT QUERIES -------- */
+
+@container form (min-width: 700px) {
+  .form__form {
+    display: grid;
+    grid-template-areas: 
+    "nombre apellido"
+    "correo correo"
+    "mensaje mensaje"
+    "boton boton";
+  }
+
+  .form__container:first-child {
+    grid-area: nombre;
+  }
+
+  .form__container:nth-child(2) {
+    grid-area: apellido;
+  }
+  .form__container:nth-child(3) {
+    grid-area: correo;
+  }
+  .form__container:nth-child(4) {
+    grid-area: mensaje;
+  }
+
+  .form__container:last-child {
+    grid-area: boton;
+  }
+}
+
+/* -------- CONTACT ENDS -------- */
+
+/* -------- FOOTER SECTION -------- */
+
+.footer {
+  background-color: #da7430;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+  font-size: 0.8rem;
+}
+
+/* -------- FOOTER QUERIES -------- */
+/* -------- FOOTER ENDS -------- */
